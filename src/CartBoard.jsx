@@ -59,16 +59,13 @@ function Cart ({cart, setCart, setOrder}) {
                                         newCart[findIdx].qty = parseInt(e.target.value);
                                         setCart(newCart);
                                     }}>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                        <option value="6">6</option>
-                                        <option value="7">7</option>
-                                        <option value="8">8</option>
-                                        <option value="9">9</option>
-                                        <option value="10">10</option>
+                                        {
+                                            Array.from({ length: item.qty > 10 ? item.qty : 10 }, (value, index) => index + 1).map((values) => {
+                                                return (
+                                                    <option key={values} value={values}>{values}</option>
+                                                )
+                                            })
+                                        }
                                     </select>
                                     </td>
                                     <td>{item.price}</td>
